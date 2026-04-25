@@ -1,14 +1,14 @@
 date,day,time,location,players_booked,carts_booked,notes
 2026-01-24,Sat,06:30,Toti,24,6,Not last Sat
 2026-02-28,Sat,06:30,Umdoni,24,8,
-2026-03-22,Sun,07:00,Kloof,24,6,NOTE: Sunday not Saturday
+2026-03-22,Sun,07:00,Kloof,24,6,NOTE: not Saturday its Sunday
 2026-04-25,Sat,07:30,Scottsburgh,20,5,
-2026-05-31,Sun,07:00,Simbithi,28,Cart sharing,NOTE: Sunday not Saturday
+2026-05-31,Sun,07:00,Simbithi,28,Cart sharing,NOTE: not Saturday its Sunday
 2026-06-27,Sat,07:33,Royal,24,6,
 2026-07-25,Sat,08:06,Umhlali,30,,
 2026-08-29,Sat,07:00,Umkomaas,30,6,
 2026-09-12,Sat,,SUPER 6 - Royal,,,Details still to be confirmed
 2026-09-26,Sat,08:00,Maritzburg GC,30,6,
-2026-10-24,Sat,06:52,Selborne,30,7,Not last Sat
+2026-10-24,Sat,06:52,Selborne,30,7,NOTE: Not last Sat
 2026-11-28,Sat,07:00,Camelot,24,5,
-2026-12-12,Sat,,Royal / Umhlali,30,tba,Tba; not last Sat
+2026-12-12,Sat,,Royal / Umhlali,30,TBA,TBA; NOTE: not Saturday its Sunday

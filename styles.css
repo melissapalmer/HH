@@ -328,15 +328,28 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
 /* ---------- Footer ---------- */
 .footer {
   text-align: center;
-  padding: 2rem var(--pad-x) calc(2rem + env(safe-area-inset-bottom));
+  padding: 1.5rem var(--pad-x) calc(1.5rem + env(safe-area-inset-bottom));
   border-top: 1px solid var(--border);
 }
-.footer .patch {
-  width: min(40vw, 140px);
-  margin: 0 auto 0.75rem;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
+.footer .quote {
+  margin: 0 auto 0.5rem;
+  max-width: 60ch;
+  color: var(--text);
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+  line-height: 1.5;
 }
+.footer .quote::before { content: '"'; color: var(--accent); margin-right: 0.1em; }
+.footer .quote::after  { content: '"'; color: var(--accent); margin-left:  0.1em; }
+.footer .quote .attr {
+  display: block;
+  margin-top: 0.35rem;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.footer .quote .attr::before { content: '— '; }
+.footer-credit { margin: 0; font-size: 0.85rem; }
 
 /* ---------- Tablet (>= 720px) ---------- */
 @media (min-width: 720px) {

@@ -266,10 +266,35 @@
     }[c]));
   }
 
+  // -------- Footer quote --------
+  const QUOTES = [
+    { text: "Golf is a good walk spoiled.", who: "Mark Twain" },
+    { text: "The most important shot in golf is the next one.", who: "Ben Hogan" },
+    { text: "I have a tip that can take five strokes off anyone's golf game. It's called an eraser.", who: "Arnold Palmer" },
+    { text: "Golf is deceptively simple and endlessly complicated.", who: "Arnold Palmer" },
+    { text: "Don't play too much golf. Two rounds a day are plenty.", who: "Harry Vardon" },
+    { text: "If you think it's hard to meet new people, try picking up the wrong golf ball.", who: "Jack Lemmon" },
+    { text: "Real golfers don't cry when they line up their fourth putt.", who: "Karen Hurwitz" },
+    { text: "Golf is a game whose aim is to hit a very small ball into an even smaller hole, with weapons singularly ill-designed for the purpose.", who: "Winston Churchill" },
+    { text: "I'd give up golf if I didn't have so many sweaters.", who: "Bob Hope" },
+    { text: "Why do golfers always wear two pairs of trousers? In case they get a hole in one.", who: "" },
+    { text: "Golfer to caddy: 'I think I'm going to drown myself in the lake.' Caddy: 'Think you can keep your head down that long?'", who: "" },
+    { text: "The only sure rule in golf is — he who has the fastest cart never has to play the bad lie.", who: "Mickey Mantle" },
+    { text: "Golf is the closest game to the game we call life. You get bad breaks from good shots and good breaks from bad shots — but you have to play the ball where it lies.", who: "Bobby Jones" },
+    { text: "I'm not saying my golf game went bad, but if I grew tomatoes they'd come up sliced.", who: "Miller Barber" },
+  ];
+  function showRandomQuote() {
+    const el = $('#footer-quote');
+    if (!el) return;
+    const q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+    el.innerHTML = `${escapeHtml(q.text)}${q.who ? `<span class="attr">${escapeHtml(q.who)}</span>` : ''}`;
+  }
+
   // -------- Boot --------
   document.addEventListener('DOMContentLoaded', async () => {
     wireLightbox();
     wireNav();
+    showRandomQuote();
     const nextGame = await renderGames();
     startCountdown(nextGame);
     await renderTeeTimes(nextGame);

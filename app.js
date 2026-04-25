@@ -210,7 +210,10 @@
     list.innerHTML = items.map(r => `
       <article class="news-item">
         <time datetime="${escapeHtml(r.date)}">${escapeHtml(formatShortDate(r._dt))}</time>
-        <p>${escapeHtml(r.text)}</p>
+        <div class="news-body">
+          <p>${escapeHtml(r.text)}</p>
+          ${r.author ? `<p class="news-author">— ${escapeHtml(r.author)}</p>` : ''}
+        </div>
       </article>
     `).join('');
   }

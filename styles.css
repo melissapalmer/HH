@@ -238,7 +238,10 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   font-size: 0.95rem;
   white-space: nowrap;
 }
-.news-item p { margin: 0; }
+.news-body { min-width: 0; }
+.news-body p { margin: 0; }
+.news-body p + p { margin-top: 0.4rem; }
+.news-author { color: var(--muted); font-size: 0.9rem; font-style: italic; }
 @media (max-width: 480px) {
   .news-item { grid-template-columns: 1fr; gap: 0.25rem; }
 }

@@ -215,37 +215,6 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   .games-table th, .games-table td { padding: 0.5rem 0.45rem; font-size: 0.85rem; }
 }
 
-/* ---------- Tee times ---------- */
-.tee-format {
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.1rem;
-  margin-bottom: 1.25rem;
-}
-.tee-format h3 { margin-top: 0; }
-.tee-format .meta { color: var(--muted); margin: 0; }
-
-.tee-groups {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-.tee-group {
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.85rem 1rem;
-}
-.tee-group .tee-time {
-  font-family: 'Anton', Impact, sans-serif;
-  color: var(--accent);
-  font-size: 1.3rem;
-  margin-bottom: 0.25rem;
-}
-.tee-group ul { margin: 0; padding-left: 1.1rem; }
-.tee-group li { padding: 2px 0; }
-
 /* ---------- News ---------- */
 .news-list {
   display: grid;
@@ -414,7 +383,6 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   }
 
   .games-list { grid-template-columns: repeat(2, 1fr); }
-  .tee-groups { grid-template-columns: repeat(2, 1fr); }
   .photo-grid { grid-template-columns: repeat(3, 1fr); }
 }
 

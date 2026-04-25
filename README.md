@@ -1,6 +1,6 @@
 # Happy Hookers — Golf Society Site
 
-A small static website for the Happy Hookers golf social club: upcoming games, monthly tee times (with the format), and photos from past rounds. Single-page site with tab-style navigation. Hosted on GitHub Pages — no build step, no frameworks.
+A small static website for the Happy Hookers golf social club: upcoming games, short news notes, and photos from past rounds. Single-page site with tab-style navigation. Hosted on GitHub Pages — no build step, no frameworks.
 
 ## Editing the site each month
 
@@ -9,8 +9,7 @@ Almost everything you'll change lives in the `data/` folder. Open these in a spr
 | File | What it controls |
 |---|---|
 | `data/games.csv` | Upcoming games — date, time, location, format, notes |
-| `data/tee-times.csv` | Tee groups for the next game (rows whose `game_date` matches a row in `games.csv`) |
-| `data/news.csv` | Short dated notes (winners of the day, welcome-backs, etc.) — `date,text`, newest shown first |
+| `data/news.csv` | Short dated notes (winners of the day, welcome-backs, etc.) — `date,author,text`, newest shown first |
 | `data/photos.csv` | One row per photo: `filename,caption` (filename must exist in `images/photos/`) |
 
 Adding a new photo:
@@ -73,8 +72,8 @@ If you'd rather use the GitHub web UI instead of `gh`:
 Once Pages is set up, every push to `main` redeploys automatically (~30 seconds):
 
 ```bash
-git add data/games.csv data/tee-times.csv          # whatever you edited
-git commit -m "Update May tee times"
+git add data/games.csv data/news.csv               # whatever you edited
+git commit -m "May news + games update"
 git push
 ```
 
@@ -87,12 +86,12 @@ hh/
 ├── app.js              # CSV loader, tab switcher, countdown, photo lightbox
 ├── data/
 │   ├── games.csv
-│   ├── tee-times.csv
+│   ├── news.csv
 │   └── photos.csv
 ├── images/
 │   ├── logo.jpg        # Original line-art logo
 │   ├── logo-mask.png   # Transparent PNG used as a CSS mask (recoloured to #2c76af)
-│   ├── patch.jpg       # Embroidered patch photo (footer)
+│   ├── patch.jpg       # Embroidered patch photo (kept for reference, not currently displayed)
 │   └── photos/         # Round photos referenced by photos.csv
 └── .nojekyll           # Tells GitHub Pages to skip Jekyll processing
 ```

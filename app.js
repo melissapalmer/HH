@@ -138,46 +138,6 @@
     const handle = setInterval(tick, 60_000);
   }
 
-  // -------- Tee times --------
-  async function renderTeeTimes(nextGame) {
-    const formatBox = $('#tee-format');
-    const groupsBox = $('#tee-groups');
-    const teeRows = await loadCSV('data/tee-times.csv');
-    if (teeRows === null) { groupsBox.innerHTML = `<p class="muted">Couldn't load tee-times.csv.</p>`; return; }
-
-    if (!nextGame) {
-      formatBox.innerHTML = '';
-      groupsBox.innerHTML = `<p class="muted">No upcoming game scheduled — tee times will appear here.</p>`;
-      return;
-    }
-
-    formatBox.innerHTML = `
-      <h3>${formatLongDate(nextGame._dt)} — ${escapeHtml(nextGame.location || '')}</h3>
-      ${nextGame.format ? `<p><strong>Format:</strong> ${escapeHtml(nextGame.format)}</p>` : ''}
-      ${nextGame.notes ? `<p class="meta">${escapeHtml(nextGame.notes)}</p>` : ''}
-    `;
-
-    const groups = teeRows
-      .filter(r => r.game_date === nextGame.date)
-      .sort((a, b) => (a.tee_time || '').localeCompare(b.tee_time || ''));
-
-    if (!groups.length) {
-      groupsBox.innerHTML = `<p class="muted">Tee times haven't been published yet for this game.</p>`;
-      return;
-    }
-
-    groupsBox.innerHTML = groups.map(g => {
-      const players = ['player1', 'player2', 'player3', 'player4']
-        .map(k => g[k]).filter(Boolean);
-      return `
-        <div class="tee-group">
-          <div class="tee-time">${escapeHtml(g.tee_time || '')}</div>
-          <ul>${players.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>
-        </div>
-      `;
-    }).join('');
-  }
-
   // -------- Photos & lightbox --------
   let currentPhotos = [];
   let currentIndex = 0;
@@ -256,7 +216,7 @@
   }
 
   // -------- Tabs --------
-  const TABS = ['home', 'games', 'tee-times', 'news', 'photos'];
+  const TABS = ['home', 'games', 'news', 'photos'];
 
   function switchTab(name) {
     if (!TABS.includes(name)) name = 'home';
@@ -319,7 +279,6 @@
     showRandomQuote();
     const nextGame = await renderGames();
     startCountdown(nextGame);
-    await renderTeeTimes(nextGame);
     await renderNews();
     await renderPhotos();
   });

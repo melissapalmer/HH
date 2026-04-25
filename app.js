@@ -68,6 +68,10 @@
     return d.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
   }
 
+  function formatGameDate(d) {
+    return d.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
+  }
+
   // -------- Games --------
   async function renderGames() {
     const list = $('#games-list');
@@ -99,7 +103,7 @@
           <tbody>
             ${upcoming.map(g => `
               <tr>
-                <td>${escapeHtml(formatShortDate(g._dt))}</td>
+                <td>${escapeHtml(formatGameDate(g._dt))}</td>
                 <td>
                   ${cell(g.location)}
                   ${g.notes && g.notes.trim() ? `<span class="game-note">${escapeHtml(g.notes)}</span>` : ''}

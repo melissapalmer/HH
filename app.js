@@ -64,6 +64,10 @@
     return d.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   }
 
+  function formatShortDate(d) {
+    return d.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
   // -------- Games --------
   async function renderGames() {
     const list = $('#games-list');
@@ -81,15 +85,27 @@
       return null;
     }
 
-    list.innerHTML = upcoming.map(g => `
-      <article class="game-card">
-        <div class="date">${formatLongDate(g._dt)}</div>
-        <div class="meta">${g.time ? escapeHtml(g.time) + ' tee off' : ''}</div>
-        <div class="location">${escapeHtml(g.location || '')}</div>
-        ${g.format ? `<div class="format"><strong>Format:</strong> ${escapeHtml(g.format)}</div>` : ''}
-        ${g.notes ? `<div class="notes">${escapeHtml(g.notes)}</div>` : ''}
-      </article>
-    `).join('');
+    const cell = v => escapeHtml(v && v.trim() ? v : '—');
+    list.innerHTML = `
+      <div class="games-table-wrap">
+        <table class="games-table">
+          <thead>
+            <tr><th scope="col">Date</th><th scope="col">Tee off</th><th scope="col">Location</th><th scope="col">Format</th><th scope="col" class="col-notes">Notes</th></tr>
+          </thead>
+          <tbody>
+            ${upcoming.map(g => `
+              <tr>
+                <td><span class="date-full">${escapeHtml(formatShortDate(g._dt))}</span></td>
+                <td>${cell(g.time)}</td>
+                <td>${cell(g.location)}</td>
+                <td>${cell(g.format)}</td>
+                <td class="col-notes">${cell(g.notes)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
 
     return upcoming[0];
   }

@@ -115,7 +115,8 @@
       </div>
     `;
 
-    return upcoming[0];
+    const now = new Date();
+    return upcoming.find(g => g._dt > now) || null;
   }
 
   // -------- Countdown --------

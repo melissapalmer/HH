@@ -208,7 +208,11 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
 .games-table .col-notes { white-space: normal; min-width: 12ch; color: var(--muted); }
 @media (max-width: 600px) {
   .games-table .col-notes { display: none; }
-  .games-table th, .games-table td { padding: 0.6rem 0.6rem; font-size: 0.9rem; }
+  .games-table th, .games-table td { padding: 0.6rem 0.55rem; font-size: 0.9rem; }
+}
+@media (max-width: 480px) {
+  .games-table .col-tee  { display: none; }
+  .games-table th, .games-table td { padding: 0.5rem 0.45rem; font-size: 0.85rem; }
 }
 
 /* ---------- Tee times ---------- */

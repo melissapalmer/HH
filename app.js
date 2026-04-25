@@ -280,7 +280,7 @@
     const el = $('#footer-quote');
     if (!el) return;
     const q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
-    el.innerHTML = `${escapeHtml(q.text)}${q.who ? `<span class="attr">${escapeHtml(q.who)}</span>` : ''}`;
+    el.innerHTML = `<span class="quote-text">${escapeHtml(q.text)}</span>${q.who ? `<span class="attr">${escapeHtml(q.who)}</span>` : ''}`;
   }
 
   // -------- Boot --------

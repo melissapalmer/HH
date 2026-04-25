@@ -348,8 +348,8 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   font-size: clamp(0.95rem, 2.4vw, 1.05rem);
   line-height: 1.5;
 }
-.footer .quote::before { content: '"'; color: var(--accent); margin-right: 0.1em; }
-.footer .quote::after  { content: '"'; color: var(--accent); margin-left:  0.1em; }
+.footer .quote-text::before { content: '"'; color: var(--accent); margin-right: 0.1em; }
+.footer .quote-text::after  { content: '"'; color: var(--accent); margin-left:  0.1em; }
 .footer .quote .attr {
   display: block;
   margin-top: 0.35rem;

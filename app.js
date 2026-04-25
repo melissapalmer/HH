@@ -125,6 +125,8 @@
     const value = $('#countdown');
     if (!nextGame) { card.hidden = true; return; }
     card.hidden = false;
+    $('#next-course').textContent = nextGame.location || '—';
+    $('#next-time').textContent = nextGame.time || 'tba';
 
     const tick = () => {
       const now = new Date();

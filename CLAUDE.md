@@ -1,4 +1,4 @@
-# CLAUDE.md — Project rules for Happy Hookers (hh)
+# CLAUDE.md — Project rules for Happy Hookers (HH)
 
 A small static site for a golf social club, hosted on GitHub Pages. This file
 captures rules that should be respected without being asked. Add to it whenever
@@ -75,8 +75,9 @@ the user gives feedback that should stick across sessions.
   config (`user.name`, `user.email`) is set explicitly — never override with
   the global config or push under any MIT identity. If you ever need to verify:
   `git config --local --get user.email` should be `melissa.palmer@gmail.com`.
-- **Repo lives at `github.com/melissapalmer/hh`.** Site URL:
-  `https://melissapalmer.github.io/hh/`.
+- **Repo lives at `github.com/melissapalmer/HH`.** Site URL:
+  `https://melissapalmer.github.io/HH/` — note the **capital `HH`**, the URL
+  is case-sensitive. `…/hh/` returns 404 on GitHub Pages.
 - **Deploy is automatic** — every push to `main` redeploys via GitHub Pages.
 - **First-time push instructions are in [README.md](README.md)** under
   *First-time setup*. Don't duplicate them here.

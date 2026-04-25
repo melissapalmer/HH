@@ -30,7 +30,7 @@ Then open <http://localhost:8765/> in any browser.
 
 ## First-time setup: push to GitHub & enable Pages
 
-The repo is already initialised locally with the personal `melissapalmer` git identity. These steps publish it to **github.com/melissapalmer/hh** and turn on GitHub Pages.
+The repo is already initialised locally with the personal `melissapalmer` git identity. These steps publish it to **github.com/melissapalmer/HH** and turn on GitHub Pages.
 
 > ⚠️ Use the **personal** `melissapalmer` GitHub account — **not** the MIT account (`github.mit.edu`).
 
@@ -48,24 +48,24 @@ gh auth login --hostname github.com --git-protocol ssh --web
 gh auth status
 
 # 4. Create the public repo and push (one command, uses gh auth)
-gh repo create melissapalmer/hh --public --source=. --remote=origin --push
+gh repo create melissapalmer/HH --public --source=. --remote=origin --push
 
 # 5. Verify origin
 git remote -v
-#   expect: origin  git@github.com:melissapalmer/hh.git
+#   expect: origin  git@github.com:melissapalmer/HH.git
 
 # 6. Enable GitHub Pages (deploy from the main branch root)
-gh api -X POST repos/melissapalmer/hh/pages -f source.branch=main -f source.path=/
+gh api -X POST repos/melissapalmer/HH/pages -f source.branch=main -f source.path=/
 
 # 7. Open the live site (give Pages 30–60 seconds for the first build)
-xdg-open https://melissapalmer.github.io/hh/
+xdg-open https://melissapalmer.github.io/HH/
 ```
 
 If you'd rather use the GitHub web UI instead of `gh`:
-1. Create a new public repo at <https://github.com/new> named `hh` under your `melissapalmer` account. Don't add a README — we already have one here.
-2. Back in this directory: `git remote add origin git@github.com:melissapalmer/hh.git && git push -u origin main`
+1. Create a new public repo at <https://github.com/new> named `HH` under your `melissapalmer` account. Don't add a README — we already have one here.
+2. Back in this directory: `git remote add origin git@github.com:melissapalmer/HH.git && git push -u origin main`
 3. On GitHub: **Settings → Pages → Source → Deploy from a branch → main / / (root) → Save**.
-4. Wait ~1 minute, then visit <https://melissapalmer.github.io/hh/>.
+4. Wait ~1 minute, then visit <https://melissapalmer.github.io/HH/>.
 
 ## Day-to-day update flow
 
@@ -80,7 +80,7 @@ git push
 ## File map
 
 ```
-hh/
+HH/
 ├── index.html          # Page markup (hero, tab nav, four tab panels, lightbox)
 ├── styles.css          # Black + #2c76af palette, mobile-first, tab styles
 ├── app.js              # CSV loader, tab switcher, countdown, photo lightbox

@@ -44,8 +44,12 @@ the user gives feedback that should stick across sessions.
 - **Footer is the random golf quote only.** Don't add the patch image back or
   re-add a "Happy Hookers Golf Society" credit line — both were explicitly
   removed.
-- **Schedule defaults to the last Saturday of each month** for upcoming games.
-  Pre-fill placeholders (`TBC` for location/format) — never invent locations.
+- **The 2026 schedule is curated** by the user (mostly last Saturdays, some
+  exceptions noted in the `notes` column). Don't auto-generate dates — copy
+  what the user gives. `data/games.csv` columns:
+  `date,day,time,location,players_booked,carts_booked,notes`. Numeric fields
+  may be blank or hold strings like `Cart sharing` / `tba`. The renderer
+  displays `—` for blank cells.
 
 ## Logo handling
 

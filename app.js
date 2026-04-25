@@ -90,15 +90,23 @@
       <div class="games-table-wrap">
         <table class="games-table">
           <thead>
-            <tr><th scope="col">Date</th><th scope="col" class="col-tee">Tee off</th><th scope="col">Location</th><th scope="col">Format</th><th scope="col" class="col-notes">Notes</th></tr>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Course</th>
+              <th scope="col" class="col-tee">Tee off</th>
+              <th scope="col" class="col-num">Players</th>
+              <th scope="col" class="col-num">Carts</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
           </thead>
           <tbody>
             ${upcoming.map(g => `
               <tr>
-                <td><span class="date-full">${escapeHtml(formatShortDate(g._dt))}</span></td>
-                <td class="col-tee">${cell(g.time)}</td>
+                <td>${escapeHtml(formatShortDate(g._dt))}</td>
                 <td>${cell(g.location)}</td>
-                <td>${cell(g.format)}</td>
+                <td class="col-tee">${cell(g.time)}</td>
+                <td class="col-num">${cell(g.players_booked)}</td>
+                <td class="col-num">${cell(g.carts_booked)}</td>
                 <td class="col-notes">${cell(g.notes)}</td>
               </tr>
             `).join('')}

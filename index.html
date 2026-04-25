@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<header class="hero" id="home">
+<header class="hero">
   <a class="logo" href="#home" aria-label="Happy Hookers home"></a>
   <h1 class="club-name">Happy Hookers</h1>
   <p class="tagline">Golf, banter, and the occasional decent shot.</p>
@@ -25,28 +25,32 @@
   <label for="nav-toggle" class="nav-burger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </label>
-  <ul class="nav-list">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#games">Upcoming Games</a></li>
-    <li><a href="#tee-times">Tee Times</a></li>
-    <li><a href="#photos">Photos</a></li>
-  </ul>
+  <div class="nav-list" role="tablist">
+    <button class="tab-btn active" role="tab" data-tab="home" aria-selected="true">Home</button>
+    <button class="tab-btn" role="tab" data-tab="games" aria-selected="false">Upcoming Games</button>
+    <button class="tab-btn" role="tab" data-tab="tee-times" aria-selected="false">Tee Times</button>
+    <button class="tab-btn" role="tab" data-tab="photos" aria-selected="false">Photos</button>
+  </div>
 </nav>
 
 <main>
 
-  <section id="games" class="section">
-    <h2>Upcoming Games</h2>
+  <section id="home" class="tab-content active" role="tabpanel">
+    <p class="welcome">Welcome to the Happy Hookers — your home for upcoming games, tee times and photos from the rounds.</p>
     <div class="countdown-card" id="countdown-card" hidden>
       <span class="countdown-label">Next game tees off in</span>
       <span class="countdown-value" id="countdown">—</span>
     </div>
+  </section>
+
+  <section id="games" class="tab-content" role="tabpanel">
+    <h2>Upcoming Games</h2>
     <div class="games-list" id="games-list" aria-live="polite">
       <p class="muted">Loading games…</p>
     </div>
   </section>
 
-  <section id="tee-times" class="section">
+  <section id="tee-times" class="tab-content" role="tabpanel">
     <h2>Tee Times</h2>
     <div class="tee-format" id="tee-format"></div>
     <div class="tee-groups" id="tee-groups" aria-live="polite">
@@ -54,7 +58,7 @@
     </div>
   </section>
 
-  <section id="photos" class="section">
+  <section id="photos" class="tab-content" role="tabpanel">
     <h2>Photos</h2>
     <div class="photo-grid" id="photo-grid" aria-live="polite">
       <p class="muted">Loading photos…</p>

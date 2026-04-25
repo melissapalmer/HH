@@ -217,12 +217,30 @@
     });
   }
 
-  // -------- Nav: close mobile menu after a tap --------
-  function wireNav() {
-    const toggle = $('#nav-toggle');
-    $$('.nav-list a').forEach(a => {
-      a.addEventListener('click', () => { toggle.checked = false; });
+  // -------- Tabs --------
+  const TABS = ['home', 'games', 'tee-times', 'photos'];
+
+  function switchTab(name) {
+    if (!TABS.includes(name)) name = 'home';
+    $$('.tab-btn').forEach(b => {
+      const on = b.dataset.tab === name;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
     });
+    $$('.tab-content').forEach(p => p.classList.toggle('active', p.id === name));
+    $('#nav-toggle').checked = false;
+    if (location.hash.slice(1) !== name) history.replaceState(null, '', '#' + name);
+    window.scrollTo({ top: 0 });
+  }
+
+  function wireNav() {
+    $$('.tab-btn').forEach(b => {
+      b.addEventListener('click', () => switchTab(b.dataset.tab));
+    });
+    $('.logo')?.addEventListener('click', e => { e.preventDefault(); switchTab('home'); });
+    window.addEventListener('hashchange', () => switchTab(location.hash.slice(1)));
+    const initial = location.hash.slice(1);
+    if (TABS.includes(initial)) switchTab(initial);
   }
 
   // -------- Util --------

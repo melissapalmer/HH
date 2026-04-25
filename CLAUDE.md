@@ -79,6 +79,12 @@ the user gives feedback that should stick across sessions.
   `https://melissapalmer.github.io/HH/` — note the **capital `HH`**, the URL
   is case-sensitive. `…/hh/` returns 404 on GitHub Pages.
 - **Deploy is automatic** — every push to `main` redeploys via GitHub Pages.
+  Pages is set to **Source: GitHub Actions** (not "Deploy from a branch") so
+  the [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow
+  can inject the short commit SHA into `index.html` as a cache-buster on the
+  asset URLs (`styles.css?v=__VERSION__` → `styles.css?v=abc1234`). **Do not**
+  remove the `__VERSION__` placeholder or hardcode a value — keep it as the
+  literal string so the workflow can substitute on each deploy.
 - **First-time push instructions are in [README.md](README.md)** under
   *First-time setup*. Don't duplicate them here.
 

@@ -349,7 +349,7 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   font-size: 0.85rem;
 }
 .footer .quote .attr::before { content: '— '; }
-.footer-credit { margin: 0; font-size: 0.85rem; }
+.footer .quote:last-child { margin-bottom: 0; }
 
 /* ---------- Tablet (>= 720px) ---------- */
 @media (min-width: 720px) {

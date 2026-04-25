@@ -233,8 +233,30 @@
     });
   }
 
+  // -------- News --------
+  async function renderNews() {
+    const list = $('#news-list');
+    const rows = await loadCSV('data/news.csv');
+    if (rows === null) { list.innerHTML = `<p class="muted">Couldn't load news.csv.</p>`; return; }
+    if (!rows.length) {
+      list.innerHTML = `<p class="muted">No news yet.</p>`;
+      return;
+    }
+    const items = rows
+      .map(r => ({ ...r, _dt: parseGameDateTime(r.date, '') }))
+      .filter(r => r._dt && r.text)
+      .sort((a, b) => b._dt - a._dt);
+
+    list.innerHTML = items.map(r => `
+      <article class="news-item">
+        <time datetime="${escapeHtml(r.date)}">${escapeHtml(formatShortDate(r._dt))}</time>
+        <p>${escapeHtml(r.text)}</p>
+      </article>
+    `).join('');
+  }
+
   // -------- Tabs --------
-  const TABS = ['home', 'games', 'tee-times', 'photos'];
+  const TABS = ['home', 'games', 'tee-times', 'news', 'photos'];
 
   function switchTab(name) {
     if (!TABS.includes(name)) name = 'home';
@@ -298,6 +320,7 @@
     const nextGame = await renderGames();
     startCountdown(nextGame);
     await renderTeeTimes(nextGame);
+    await renderNews();
     await renderPhotos();
   });
 })();

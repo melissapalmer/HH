@@ -28,7 +28,7 @@ the user gives feedback that should stick across sessions.
 - **Use `100dvh`/`100dvw` (not `vh`/`vw`) for full-screen overlays** so iOS
   Safari's URL bar doesn't clip the lightbox.
 - **Layout is tab-based**, not anchor-scrolling. Tabs are Home, Upcoming Games,
-  Tee Times, Photos. The countdown lives in the Home tab.
+  Tee Times, News, Photos. The countdown lives in the Home tab.
 - **The hero is compact** — logo on the left, club name + tagline on the
   right. Don't restore the big stacked centred hero.
 

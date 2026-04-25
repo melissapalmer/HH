@@ -10,6 +10,7 @@ Almost everything you'll change lives in the `data/` folder. Open these in a spr
 |---|---|
 | `data/games.csv` | Upcoming games — date, time, location, format, notes |
 | `data/tee-times.csv` | Tee groups for the next game (rows whose `game_date` matches a row in `games.csv`) |
+| `data/news.csv` | Short dated notes (winners of the day, welcome-backs, etc.) — `date,text`, newest shown first |
 | `data/photos.csv` | One row per photo: `filename,caption` (filename must exist in `images/photos/`) |
 
 Adding a new photo:

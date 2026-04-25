@@ -45,11 +45,13 @@ the user gives feedback that should stick across sessions.
   re-add a "Happy Hookers Golf Society" credit line — both were explicitly
   removed.
 - **The 2026 schedule is curated** by the user (mostly last Saturdays, some
-  exceptions noted in the `notes` column). Don't auto-generate dates — copy
-  what the user gives. `data/games.csv` columns:
-  `date,day,time,location,players_booked,carts_booked,notes`. Numeric fields
-  may be blank or hold strings like `Cart sharing` / `tba`. The renderer
-  displays `—` for blank cells.
+  exceptions called out in the `notes` column). Don't auto-generate dates —
+  copy what the user gives. `data/games.csv` columns:
+  `date,day,time,location,notes`. The `day` column is for human reference
+  (Sat/Sun), not displayed; the renderer derives the weekday from the date.
+  Blank cells render as `—`. The `notes` column is the one place to flag
+  things like "Sunday not Saturday" or "Not last Sat" — keep all 4 visible
+  columns showing at every screen size so members don't miss those.
 
 ## Logo handling
 

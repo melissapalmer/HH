@@ -8,7 +8,7 @@ Almost everything you'll change lives in the `data/` folder. Open these in a spr
 
 | File | What it controls |
 |---|---|
-| `data/games.csv` | Upcoming games — `date, day, time, location, players_booked, carts_booked, notes` |
+| `data/games.csv` | Upcoming games — `date, day, time, location, notes` |
 | `data/news.csv` | Short dated notes (winners of the day, welcome-backs, etc.) — `date,author,text`, newest shown first |
 | `data/photos.csv` | One row per photo: `filename,caption` (filename must exist in `images/photos/`) |
 

@@ -1,0 +1,308 @@
+:root {
+  --bg: #000;
+  --bg-elev: #0c0c0c;
+  --accent: #2c76af;
+  --accent-soft: #1a4a6e;
+  --text: #fff;
+  --muted: #9aa3ac;
+  --border: rgba(44, 118, 175, 0.55);
+  --pad-x: clamp(1rem, 4vw, 2.5rem);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; }
+
+h1, h2, h3 { font-family: 'Anton', Impact, sans-serif; letter-spacing: 0.02em; line-height: 1.05; margin: 0 0 0.5em; }
+h2 { font-size: clamp(1.75rem, 6vw, 2.75rem); color: var(--accent); text-transform: uppercase; }
+h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
+.muted { color: var(--muted); }
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding: clamp(2rem, 7vw, 4rem) var(--pad-x) clamp(1.5rem, 5vw, 3rem);
+  background: radial-gradient(ellipse at top, #0d1f2d 0%, #000 70%);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 1.25rem;
+  width: min(60vw, 240px);
+  aspect-ratio: 1244 / 974;
+  background-color: var(--accent);
+  -webkit-mask: url('images/logo-mask.png') center/contain no-repeat;
+          mask: url('images/logo-mask.png') center/contain no-repeat;
+}
+
+.club-name {
+  font-size: clamp(2.25rem, 9vw, 4rem);
+  color: var(--accent);
+  margin: 0 0 0.25em;
+  text-transform: uppercase;
+}
+.tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  margin-left: auto;
+  cursor: pointer;
+}
+.nav-burger span {
+  display: block;
+  height: 2px;
+  background: var(--accent);
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+.nav-list li { border-bottom: 1px solid rgba(44, 118, 175, 0.15); }
+.nav-list a {
+  display: block;
+  padding: 14px var(--pad-x);
+  color: var(--text);
+  font-weight: 600;
+  min-height: 44px;
+}
+.nav-list a:hover, .nav-list a:focus-visible { background: rgba(44, 118, 175, 0.15); text-decoration: none; }
+
+#nav-toggle:checked ~ .nav .nav-list { display: flex; }
+#nav-toggle:checked ~ .nav .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#nav-toggle:checked ~ .nav .nav-burger span:nth-child(2) { opacity: 0; }
+#nav-toggle:checked ~ .nav .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Sections ---------- */
+.section {
+  padding: clamp(2rem, 6vw, 4rem) var(--pad-x);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Countdown ---------- */
+.countdown-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: linear-gradient(135deg, var(--accent-soft), #000);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.countdown-label { color: var(--muted); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.countdown-value { font-family: 'Anton', Impact, sans-serif; font-size: clamp(1.5rem, 6vw, 2.25rem); color: var(--accent); }
+
+/* ---------- Game cards ---------- */
+.games-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.game-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+}
+.game-card .date { font-family: 'Anton', Impact, sans-serif; font-size: 1.5rem; color: var(--accent); }
+.game-card .meta { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.4rem; }
+.game-card .location { font-weight: 700; }
+.game-card .format { margin-top: 0.4rem; }
+.game-card .notes { color: var(--muted); margin-top: 0.25rem; font-size: 0.95rem; }
+
+/* ---------- Tee times ---------- */
+.tee-format {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.25rem;
+}
+.tee-format h3 { margin-top: 0; }
+.tee-format .meta { color: var(--muted); margin: 0; }
+
+.tee-groups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+.tee-group {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+.tee-group .tee-time {
+  font-family: 'Anton', Impact, sans-serif;
+  color: var(--accent);
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+.tee-group ul { margin: 0; padding-left: 1.1rem; }
+.tee-group li { padding: 2px 0; }
+
+/* ---------- Photos ---------- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+.photo-grid button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  border-radius: 10px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.photo-grid img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+  transition: transform .25s ease;
+}
+.photo-grid button:hover img,
+.photo-grid button:focus-visible img { transform: scale(1.04); }
+.photo-grid .caption {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.96);
+  z-index: 100;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  justify-items: center;
+  padding:
+    calc(env(safe-area-inset-top) + 1rem)
+    calc(env(safe-area-inset-right) + 1rem)
+    calc(env(safe-area-inset-bottom) + 1rem)
+    calc(env(safe-area-inset-left) + 1rem);
+}
+.lightbox[hidden] { display: none; }
+.lightbox-img {
+  max-width: 100%;
+  max-height: calc(100dvh - 8rem);
+  object-fit: contain;
+  border-radius: 8px;
+}
+.lightbox-caption {
+  color: var(--text);
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.lightbox-btn {
+  position: absolute;
+  appearance: none;
+  background: rgba(44, 118, 175, 0.85);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  width: 48px;
+  height: 48px;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lightbox-btn:hover, .lightbox-btn:focus-visible { background: var(--accent); }
+.lightbox-close { top: calc(env(safe-area-inset-top) + 0.75rem); right: calc(env(safe-area-inset-right) + 0.75rem); }
+.lightbox-prev  { left: calc(env(safe-area-inset-left) + 0.75rem); top: 50%; transform: translateY(-50%); }
+.lightbox-next  { right: calc(env(safe-area-inset-right) + 0.75rem); top: 50%; transform: translateY(-50%); }
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 2rem var(--pad-x) calc(2rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+}
+.footer .patch {
+  width: min(40vw, 140px);
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+}
+
+/* ---------- Tablet (>= 720px) ---------- */
+@media (min-width: 720px) {
+  .nav-burger { display: none; }
+  .nav-list {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    border-top: 0;
+  }
+  .nav-list li { border-bottom: 0; }
+  .nav-list a { padding: 1rem 1.25rem; }
+
+  .games-list { grid-template-columns: repeat(2, 1fr); }
+  .tee-groups { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- Desktop (>= 1100px) ---------- */
+@media (min-width: 1100px) {
+  .games-list { grid-template-columns: repeat(3, 1fr); }
+  .photo-grid { grid-template-columns: repeat(4, 1fr); }
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>Happy Hookers Golf Society</title>
+  <meta name="description" content="Upcoming games, tee times and photos for the Happy Hookers golf social club.">
+  <link rel="icon" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero" id="home">
+  <a class="logo" href="#home" aria-label="Happy Hookers home"></a>
+  <h1 class="club-name">Happy Hookers</h1>
+  <p class="tagline">Golf, banter, and the occasional decent shot.</p>
+</header>
+
+<input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+<nav class="nav" aria-label="Primary">
+  <label for="nav-toggle" class="nav-burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </label>
+  <ul class="nav-list">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#games">Upcoming Games</a></li>
+    <li><a href="#tee-times">Tee Times</a></li>
+    <li><a href="#photos">Photos</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="games" class="section">
+    <h2>Upcoming Games</h2>
+    <div class="countdown-card" id="countdown-card" hidden>
+      <span class="countdown-label">Next game tees off in</span>
+      <span class="countdown-value" id="countdown">—</span>
+    </div>
+    <div class="games-list" id="games-list" aria-live="polite">
+      <p class="muted">Loading games…</p>
+    </div>
+  </section>
+
+  <section id="tee-times" class="section">
+    <h2>Tee Times</h2>
+    <div class="tee-format" id="tee-format"></div>
+    <div class="tee-groups" id="tee-groups" aria-live="polite">
+      <p class="muted">Loading tee times…</p>
+    </div>
+  </section>
+
+  <section id="photos" class="section">
+    <h2>Photos</h2>
+    <div class="photo-grid" id="photo-grid" aria-live="polite">
+      <p class="muted">Loading photos…</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <img class="patch" src="images/patch.jpg" alt="Happy Hookers embroidered club patch">
+  <p class="muted">Happy Hookers Golf Society</p>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lightbox-btn lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-btn lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&lsaquo;</button>
+  <img class="lightbox-img" id="lightbox-img" alt="">
+  <p class="lightbox-caption" id="lightbox-caption"></p>
+  <button class="lightbox-btn lightbox-next" id="lightbox-next" aria-label="Next photo">&rsaquo;</button>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>

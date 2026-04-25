@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.claude/
+
+# Leftover source artwork — kept on disk for reference, not part of the site
+HH_2.zip
+Logo.docx
+Logo_BG.jpg
+logo_BG1.jpg
+PHOTO-2025-07-17-08-58-07.jpg
+
+# Unrelated prototype dropped in this directory
+golf_club_hub.html

@@ -206,13 +206,20 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
 }
 .games-table tbody tr:last-child td { border-bottom: 0; }
 .games-table tbody tr:hover { background: rgba(44, 118, 175, 0.06); }
-.games-table .col-notes { white-space: normal; min-width: 9ch; color: var(--muted); }
+.games-table .game-note {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.85em;
+  font-weight: 400;
+  white-space: normal;
+  line-height: 1.35;
+}
 @media (max-width: 600px) {
   .games-table th, .games-table td { padding: 0.55rem 0.45rem; font-size: 0.88rem; }
 }
 @media (max-width: 420px) {
   .games-table th, .games-table td { padding: 0.45rem 0.35rem; font-size: 0.82rem; }
-  .games-table .col-notes { min-width: 7ch; }
 }
 
 /* ---------- News ---------- */

@@ -94,16 +94,17 @@
               <th scope="col">Date</th>
               <th scope="col">Course</th>
               <th scope="col">Tee off</th>
-              <th scope="col" class="col-notes">Notes</th>
             </tr>
           </thead>
           <tbody>
             ${upcoming.map(g => `
               <tr>
                 <td>${escapeHtml(formatShortDate(g._dt))}</td>
-                <td>${cell(g.location)}</td>
+                <td>
+                  ${cell(g.location)}
+                  ${g.notes && g.notes.trim() ? `<span class="game-note">${escapeHtml(g.notes)}</span>` : ''}
+                </td>
                 <td>${cell(g.time)}</td>
-                <td class="col-notes">${cell(g.notes)}</td>
               </tr>
             `).join('')}
           </tbody>

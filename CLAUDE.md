@@ -39,8 +39,13 @@ the user gives feedback that should stick across sessions.
 
 - **All content lives in CSVs under `data/`** so non-developers can edit in a
   spreadsheet. When the user wants to change something content-shaped (game
-  list, tee groups, photo captions, footer quotes), prefer adding/editing a
-  CSV over hard-coding in HTML or JS.
+  list, photo captions, footer quotes), prefer adding/editing a CSV over
+  hard-coding in HTML or JS.
+- **Photos group by year then by event.** `data/photos.csv` columns:
+  `filename,date,event,caption`. The `event` value is the grouping key —
+  multiple photos sharing the same `event` and `date` render under one
+  heading. Newest year and newest event come first. Don't flatten back to
+  a single grid.
 - **Footer is the random golf quote only.** Don't add the patch image back or
   re-add a "Happy Hookers Golf Society" credit line — both were explicitly
   removed.

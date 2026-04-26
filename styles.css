@@ -254,12 +254,37 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
 }
 
 /* ---------- Photos ---------- */
-.photo-grid {
+.photo-grid { display: block; }
+
+.photo-year + .photo-year { margin-top: 2rem; }
+.photo-year-heading {
+  font-family: 'Anton', Impact, sans-serif;
+  color: var(--accent);
+  font-size: clamp(1.4rem, 5vw, 1.9rem);
+  letter-spacing: 0.04em;
+  margin: 0 0 0.85rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.photo-event + .photo-event { margin-top: 1.25rem; }
+.photo-event-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.75rem;
+  margin: 0 0 0.6rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+}
+.photo-event-name { color: var(--text); font-weight: 700; }
+.photo-event-date { color: var(--muted); font-size: 0.85em; font-weight: 400; }
+
+.photo-event-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
 }
-.photo-grid button {
+.photo-event-grid button {
   appearance: none;
   border: 1px solid var(--border);
   background: var(--bg-elev);
@@ -269,15 +294,15 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   cursor: pointer;
   position: relative;
 }
-.photo-grid img {
+.photo-event-grid img {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   width: 100%;
   transition: transform .25s ease;
 }
-.photo-grid button:hover img,
-.photo-grid button:focus-visible img { transform: scale(1.04); }
-.photo-grid .caption {
+.photo-event-grid button:hover img,
+.photo-event-grid button:focus-visible img { transform: scale(1.04); }
+.photo-event-grid .caption {
   display: block;
   padding: 0.5rem 0.75rem;
   text-align: left;
@@ -393,11 +418,11 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   }
 
   .games-list { grid-template-columns: repeat(2, 1fr); }
-  .photo-grid { grid-template-columns: repeat(3, 1fr); }
+  .photo-event-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ---------- Desktop (>= 1100px) ---------- */
 @media (min-width: 1100px) {
   .games-list { grid-template-columns: repeat(3, 1fr); }
-  .photo-grid { grid-template-columns: repeat(4, 1fr); }
+  .photo-event-grid { grid-template-columns: repeat(4, 1fr); }
 }

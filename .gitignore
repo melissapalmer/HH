@@ -13,3 +13,7 @@ PHOTO-2025-07-17-08-58-07.jpg
 
 # Unrelated prototype dropped in this directory
 golf_club_hub.html
+
+# Schedule source spreadsheets (kept on disk, not in the public repo)
+*.xlsm
+*.xlsx

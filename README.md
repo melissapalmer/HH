@@ -10,11 +10,13 @@ Almost everything you'll change lives in the `data/` folder. Open these in a spr
 |---|---|
 | `data/games.csv` | Upcoming games — `date, day, time, location, notes` |
 | `data/news.csv` | Short dated notes (winners of the day, welcome-backs, etc.) — `date,author,text`, newest shown first |
-| `data/photos.csv` | One row per photo: `filename,caption` (filename must exist in `images/photos/`) |
+| `data/photos.csv` | One row per photo: `filename,date,event,caption` (filename must exist in `images/photos/`). Photos group by year, then by `event` |
 
 Adding a new photo:
 1. Drop the JPG into `images/photos/` (e.g. `2026-05-club-champs.jpg`).
-2. Add a row to `data/photos.csv`: `2026-05-club-champs.jpg,Club Champs day at Maple Ridge`
+2. Add a row to `data/photos.csv`:
+   `2026-05-club-champs.jpg,2026-05-30,Club Champs day,Maple Ridge winners shot`
+   (`event` groups multiple shots from the same outing; `caption` is per-photo and optional.)
 3. Commit + push.
 
 ## Previewing locally

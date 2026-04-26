@@ -156,19 +156,59 @@
 
   async function renderPhotos() {
     const grid = $('#photo-grid');
-    const photos = await loadCSV('data/photos.csv');
-    if (photos === null) { grid.innerHTML = `<p class="muted">Couldn't load photos.csv.</p>`; return; }
-    if (!photos.length) {
+    const rows = await loadCSV('data/photos.csv');
+    if (rows === null) { grid.innerHTML = `<p class="muted">Couldn't load photos.csv.</p>`; return; }
+    if (!rows.length) {
       grid.innerHTML = `<p class="muted">No photos yet — add some to <code>images/photos/</code> and list them in <code>data/photos.csv</code>.</p>`;
       return;
     }
 
+    // Annotate, then sort newest first by date (fall back to filename if no date)
+    const photos = rows.map(p => ({
+      ...p,
+      _dt: parseGameDateTime(p.date, '') || new Date(0),
+      _year: p.date ? p.date.slice(0, 4) : 'Undated',
+    })).sort((a, b) => b._dt - a._dt);
+
+    // Lightbox iterates the same order as displayed
     currentPhotos = photos;
-    grid.innerHTML = photos.map((p, i) => `
-      <button type="button" data-index="${i}" aria-label="${escapeHtml(p.caption || p.filename)}">
-        <img src="images/photos/${encodeURIComponent(p.filename)}" alt="${escapeHtml(p.caption || '')}" loading="lazy">
+
+    // Group by year, then by event within the year (preserving the sorted order)
+    const byYear = new Map();
+    photos.forEach((p, i) => {
+      if (!byYear.has(p._year)) byYear.set(p._year, new Map());
+      const eventKey = p.event && p.event.trim() ? p.event.trim() : 'Other';
+      const events = byYear.get(p._year);
+      if (!events.has(eventKey)) events.set(eventKey, []);
+      events.get(eventKey).push({ ...p, _index: i });
+    });
+
+    const renderTile = p => `
+      <button type="button" data-index="${p._index}" aria-label="${escapeHtml(p.caption || p.event || p.filename)}">
+        <img src="images/photos/${encodeURIComponent(p.filename)}" alt="${escapeHtml(p.caption || p.event || '')}" loading="lazy">
         ${p.caption ? `<span class="caption">${escapeHtml(p.caption)}</span>` : ''}
       </button>
+    `;
+
+    const eventDate = items => {
+      const d = items[0]._dt;
+      if (!d || d.getTime() === 0) return '';
+      return d.toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' });
+    };
+
+    grid.innerHTML = [...byYear.entries()].map(([year, events]) => `
+      <section class="photo-year">
+        <h3 class="photo-year-heading">${escapeHtml(year)}</h3>
+        ${[...events.entries()].map(([eventName, items]) => `
+          <div class="photo-event">
+            <h4 class="photo-event-heading">
+              <span class="photo-event-name">${escapeHtml(eventName)}</span>
+              ${eventDate(items) ? `<span class="photo-event-date">${escapeHtml(eventDate(items))}</span>` : ''}
+            </h4>
+            <div class="photo-event-grid">${items.map(renderTile).join('')}</div>
+          </div>
+        `).join('')}
+      </section>
     `).join('');
 
     $$('#photo-grid button').forEach(btn => {

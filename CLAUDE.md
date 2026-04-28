@@ -28,10 +28,12 @@ the user gives feedback that should stick across sessions.
 - **Use `100dvh`/`100dvw` (not `vh`/`vw`) for full-screen overlays** so iOS
   Safari's URL bar doesn't clip the lightbox.
 - **Layout is tab-based**, not anchor-scrolling. Tabs are Home, Upcoming Games,
-  News, Photos. The countdown lives in the Home tab. (A Tee Times tab existed
-  briefly but was removed — the user gets tee times the Friday before each
-  game, so a permanent on-site section was overkill. Don't add it back without
-  asking.)
+  Winners, News, Photos. The countdown lives in the Home tab.
+  (A Tee Times tab existed briefly but was removed — the user gets tee times
+  the Friday before each game, so a permanent on-site section was overkill.
+  A Handicaps tab was also built and rolled back — handicaps are still
+  tracked in the master `.xlsm` and the user decided a public on-site list
+  wasn't needed yet. Don't reintroduce either without asking.)
 - **The hero is compact** — logo on the left, club name + tagline on the
   right. Don't restore the big stacked centred hero.
 
@@ -46,6 +48,9 @@ the user gives feedback that should stick across sessions.
   multiple photos sharing the same `event` and `date` render under one
   heading. Newest year and newest event come first. Don't flatten back to
   a single grid.
+- **Winners** live in `data/winners.csv` (`date,event,winner,score,notes`),
+  one row per month. Newest first. Score is optional (e.g. "38pts") and
+  notes is for context like "count out from Mike and Coenie".
 - **Footer is the random golf quote only.** Don't add the patch image back or
   re-add a "Happy Hookers Golf Society" credit line — both were explicitly
   removed.

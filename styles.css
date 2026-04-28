@@ -222,6 +222,38 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   .games-table th, .games-table td { padding: 0.45rem 0.35rem; font-size: 0.82rem; }
 }
 
+/* ---------- Winners ---------- */
+.winners-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+.winner-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: baseline;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+.winner-item time {
+  font-family: 'Anton', Impact, sans-serif;
+  color: var(--accent);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.winner-body { min-width: 0; }
+.winner-name { font-weight: 700; color: var(--text); }
+.winner-score { font-weight: 400; color: var(--accent); margin-left: 0.4rem; }
+.winner-event { color: var(--muted); font-size: 0.9rem; margin-top: 0.15rem; }
+.winner-notes { color: var(--muted); font-size: 0.9rem; font-style: italic; margin-top: 0.25rem; }
+@media (max-width: 480px) {
+  .winner-item { grid-template-columns: 1fr; gap: 0.25rem; }
+}
+
 /* ---------- News ---------- */
 .news-list {
   display: grid;
@@ -366,6 +398,31 @@ h3 { font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: var(--accent); }
   text-align: center;
   padding: 1.5rem var(--pad-x) calc(1.5rem + env(safe-area-inset-bottom));
   border-top: 1px solid var(--border);
+}
+.supporter { margin-bottom: 1.25rem; }
+.supporter-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.supporter-logo {
+  display: inline-block;
+  background: #fff;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  line-height: 0;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.supporter-logo:hover,
+.supporter-logo:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(44, 118, 175, 0.25);
+}
+.supporter-logo img {
+  width: clamp(140px, 32vw, 200px);
+  height: auto;
 }
 .footer .quote {
   margin: 0 auto 0.5rem;

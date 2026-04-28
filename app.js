@@ -245,6 +245,30 @@
     });
   }
 
+  // -------- Winners --------
+  async function renderWinners() {
+    const list = $('#winners-list');
+    const rows = await loadCSV('data/winners.csv');
+    if (rows === null) { list.innerHTML = `<p class="muted">Couldn't load winners.csv.</p>`; return; }
+    if (!rows.length) { list.innerHTML = `<p class="muted">No winners recorded yet.</p>`; return; }
+
+    const items = rows
+      .map(r => ({ ...r, _dt: parseGameDateTime(r.date, '') }))
+      .filter(r => r._dt && r.winner)
+      .sort((a, b) => b._dt - a._dt);
+
+    list.innerHTML = items.map(r => `
+      <article class="winner-item">
+        <time datetime="${escapeHtml(r.date)}">${escapeHtml(formatShortDate(r._dt))}</time>
+        <div class="winner-body">
+          <div class="winner-name">${escapeHtml(r.winner)}${r.score ? ` <span class="winner-score">${escapeHtml(r.score)}</span>` : ''}</div>
+          ${r.event ? `<div class="winner-event">${escapeHtml(r.event)}</div>` : ''}
+          ${r.notes ? `<div class="winner-notes">${escapeHtml(r.notes)}</div>` : ''}
+        </div>
+      </article>
+    `).join('');
+  }
+
   // -------- News --------
   async function renderNews() {
     const list = $('#news-list');
@@ -271,7 +295,7 @@
   }
 
   // -------- Tabs --------
-  const TABS = ['home', 'games', 'news', 'photos'];
+  const TABS = ['home', 'games', 'winners', 'news', 'photos'];
 
   function switchTab(name) {
     if (!TABS.includes(name)) name = 'home';
@@ -334,6 +358,7 @@
     showRandomQuote();
     const nextGame = await renderGames();
     startCountdown(nextGame);
+    await renderWinners();
     await renderNews();
     await renderPhotos();
   });

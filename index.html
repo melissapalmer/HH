@@ -32,6 +32,7 @@
   <div class="nav-list" role="tablist">
     <button class="tab-btn active" role="tab" data-tab="home" aria-selected="true">Home</button>
     <button class="tab-btn" role="tab" data-tab="games" aria-selected="false">Upcoming Games</button>
+    <button class="tab-btn" role="tab" data-tab="winners" aria-selected="false">Winners</button>
     <button class="tab-btn" role="tab" data-tab="news" aria-selected="false">News</button>
     <button class="tab-btn" role="tab" data-tab="photos" aria-selected="false">Photos</button>
   </div>
@@ -57,6 +58,13 @@
     </div>
   </section>
 
+  <section id="winners" class="tab-content" role="tabpanel">
+    <h2>Winners</h2>
+    <div class="winners-list" id="winners-list" aria-live="polite">
+      <p class="muted">Loading winners…</p>
+    </div>
+  </section>
+
   <section id="news" class="tab-content" role="tabpanel">
     <h2>News</h2>
     <div class="news-list" id="news-list" aria-live="polite">
@@ -74,6 +82,12 @@
 </main>
 
 <footer class="footer">
+  <div class="supporter">
+    <p class="supporter-label">With thanks to our supporter</p>
+    <a class="supporter-logo" href="https://2opic.co.za/" target="_blank" rel="noopener noreferrer">
+      <img src="images/2opic.png" alt="2opic — Two Oceans PI Correspondents">
+    </a>
+  </div>
   <blockquote class="quote" id="footer-quote"></blockquote>
 </footer>
 

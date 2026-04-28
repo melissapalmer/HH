@@ -9,7 +9,8 @@ Almost everything you'll change lives in the `data/` folder. Open these in a spr
 | File | What it controls |
 |---|---|
 | `data/games.csv` | Upcoming games — `date, day, time, location, notes` |
-| `data/news.csv` | Short dated notes (winners of the day, welcome-backs, etc.) — `date,author,text`, newest shown first |
+| `data/news.csv` | Short dated notes (welcome-backs, club announcements, etc.) — `date,author,text`, newest shown first |
+| `data/winners.csv` | Monthly winners — `date,event,winner,score,notes`, newest shown first |
 | `data/photos.csv` | One row per photo: `filename,date,event,caption` (filename must exist in `images/photos/`). Photos group by year, then by `event` |
 
 Adding a new photo:

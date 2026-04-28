@@ -308,6 +308,7 @@
     $('#nav-toggle').checked = false;
     if (location.hash.slice(1) !== name) history.replaceState(null, '', '#' + name);
     window.scrollTo({ top: 0 });
+    showRandomQuote();
   }
 
   function wireNav() {
